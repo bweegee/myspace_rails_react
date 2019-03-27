@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Button, } from 'grommet';
+import { Box, Button, Image, } from 'grommet';
+import { Login, } from 'grommet-icons';
+import Logo from '../images/mySpace.png';
 
 class Navbar extends React.Component {
   state = {
@@ -8,8 +10,25 @@ class Navbar extends React.Component {
   render() {
     return (
       <AppBar>
-        <Box>
-          
+        <Image
+          src={Logo}
+          alt="ms"
+        />
+        <Box
+          direction="row"
+          justify="between"
+        >
+          <Button
+            label="Login"
+            icon={<Login />}
+            plain="true"
+            margin="small"
+          />
+          <Button
+            label="Register"
+            plain="true"
+            margin="small"
+          />
         </Box>
       </AppBar>
     )
@@ -21,7 +40,7 @@ const AppBar = (props) => (
     tag='header'
     direction='row'
     // align='center'
-    // justify='between'
+    justify='between'
     background='brand'
     pad={{ left: 'medium', right: 'small', vertical: 'small' }}
     elevation='medium'

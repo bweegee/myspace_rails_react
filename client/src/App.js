@@ -18,7 +18,7 @@ const App = () => (
 const theme = {
   global: {
     font: {
-      family: 'Arial Rounded',
+      family: 'Benton Sans',
       size: '16px',
       height: '20px',
     },

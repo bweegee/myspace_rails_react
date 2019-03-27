@@ -3,7 +3,7 @@ import { Box, Heading, } from 'grommet';
 
 const Home = () => (
   <Box>
-    Home
+    <Heading>Home</Heading>
   </Box>
 )
 
