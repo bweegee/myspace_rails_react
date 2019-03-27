@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, } from 'react-router-dom';
 import { Box, Button, Image, } from 'grommet';
 import { Login, } from 'grommet-icons';
 import Logo from '../images/mySpace.png';
@@ -10,25 +11,31 @@ class Navbar extends React.Component {
   render() {
     return (
       <AppBar>
-        <Image
-          src={Logo}
-          alt="ms"
-        />
+        <Link to="/">
+          <Image
+            src={Logo}
+            alt="ms"
+          />
+        </Link>
         <Box
           direction="row"
-          justify="between"
+          align="center"
         >
-          <Button
-            label="Login"
-            icon={<Login />}
-            plain="true"
-            margin="small"
-          />
-          <Button
-            label="Register"
-            plain="true"
-            margin="small"
-          />
+          <Link to="/login" style={{ color: '#FFF' }}>
+            <Button
+              label="Login"
+              icon={<Login />}
+              plain="true"
+              margin="small"
+            />
+          </Link>
+          <Link to="/register" style={{ color: '#FFF' }}>
+            <Button
+              label="Register"
+              plain="true"
+              margin="small"
+            />
+          </Link>
         </Box>
       </AppBar>
     )
