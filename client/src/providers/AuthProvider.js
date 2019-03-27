@@ -18,6 +18,16 @@ export class AuthProvider extends React.Component {
 
   redner() {
     return (
+      <AuthContext.Provider value={{
+        ...this.state,
+        authenticated: this.state.user !== null,
+        handleRegister: this.handleRegister,
+        handleLogin: this.handleLogin,
+        handleLogout: this.handleLogout,
+        setUser: (user) => this.setState({ user, }),
+      }}>
+        { this.props.children }
+      </AuthContext.Provider>
     )
   }
 }
