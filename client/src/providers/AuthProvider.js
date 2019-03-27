@@ -7,17 +7,23 @@ export const AuthConsumer = AuthContext.Consumer;
 export class AuthProvider extends React.Component {
   state = { user: null, };
 
+  // handle User actions
   handleRegister = () => {
+    // axios call to register user
   }
 
   handleLogin = () => {
+    debugger
+    // axios call to create user session
   }
 
   handleLogout = () => {
+    debugger
+    // axios call to destroy user session
   }
 
-  redner() {
-    return (
+  render() {
+    return(
       <AuthContext.Provider value={{
         ...this.state,
         authenticated: this.state.user !== null,
