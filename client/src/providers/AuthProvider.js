@@ -8,8 +8,15 @@ export class AuthProvider extends React.Component {
   state = { user: null, };
 
   // handle User actions
-  handleRegister = () => {
-    // axios call to register user
+handleRegister = (user, history) => {
+    axios.post("/api/auth", user)
+      .then( res => {
+        this.setState({ user: res.data.data, });
+        history.push("/");
+      })
+    .catch( res => {
+      console.log(res);
+    })
   }
 
   handleLogin = () => {
