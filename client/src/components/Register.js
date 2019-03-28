@@ -9,17 +9,16 @@ class Register extends React.Component {
     passConfirmation: '',
   };
 
-handleSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, passwordConfirmation } = this.state;
+    const { email, password, passConfirmation, } = this.state;
     const { auth: { handleRegister, }, history, } = this.props;
 
-    if (password === passwordConfirmation)
-      handleRegister({ email, password, passwordConfirmation, }, history);
+    if (password === passConfirmation)
+      handleRegister({ email, password, passConfirmation, }, history);
     else
-      alert('Passwords Do Not Match!')
-  }
-
+      alert("Passwords Don't Match!");
+}
   handleChange = e => {
     const {name, value} = e.target;
     this.setState({[name]: value});
@@ -29,8 +28,8 @@ handleSubmit = (e) => {
     const {email, password, passConfirmation} = this.state;
     return (
       <Box margin="large" align="center">
-        <Form onSubmit={this.handleSubmit}>
-        <Heading level="3">Register</Heading>
+        <Form>
+        <Heading level="3">Sign up!</Heading>
           <Box
             width="medium"
             direction="row"
@@ -75,7 +74,7 @@ handleSubmit = (e) => {
               onChange={this.handleChange}
             />
           </Box>
-          <Button onSubmit={this.handleSubmit} label="Submit" />
+          <Button onClick={this.handleSubmit} label="Register" />
         </Form>
       </Box>
     );

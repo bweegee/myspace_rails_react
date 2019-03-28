@@ -8,7 +8,7 @@ export class AuthProvider extends React.Component {
   state = { user: null, };
 
   // handle User actions
-handleRegister = (user, history) => {
+  handleRegister = (user, history) => {
     axios.post("/api/auth", user)
       .then( res => {
         this.setState({ user: res.data.data, });
@@ -19,14 +19,26 @@ handleRegister = (user, history) => {
     })
   }
 
-  handleLogin = () => {
-    debugger
-    // axios call to create user session
+  handleLogin = (user, history) => {
+    axios.post("/api/auth/sign_in", user)
+      .then( res => {
+        this.setState({ user: res.data.data, });
+        history.push("/");
+      })
+      .catch( err => {
+        alert(err);
+      })
   }
 
-  handleLogout = () => {
-    debugger
-    // axios call to destroy user session
+  handleLogout = (history) => {
+    axios.delete("/api/auth/sign_out")
+      .then( res => {
+        this.setState({ user: null, });
+        history.push('/login');
+      })
+      .catch( res => {
+        console.log(res);
+      })
   }
 
   render() {
