@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { AuthConsumer, } from '../providers/AuthProvider';
 import { Grid, Box, Heading, TextInput, Button, Image, } from 'grommet';
-import { FormAdd, } from 'grommet-icons';
-import ProfilePic from '../images/asuka_profile.jpg';
+import { FormAdd, Group, } from 'grommet-icons';
+import ProfilePic from '../images/gendo.jpg';
 
 class Home extends React.Component {
   state = { posts: [], comment: '', }
@@ -15,8 +15,12 @@ class Home extends React.Component {
 
   showPosts = () => (
     this.state.posts.map( post =>
-      <Box key={post.id} margin="small">
-        <Heading level="3">{ post.comment }</Heading>
+      <Box key={post.id}
+        margin="small"
+        border="all"
+        pad="small"
+      >
+        <Heading level="4">{ post.comment }</Heading>
       </Box>
     )
   )
@@ -48,8 +52,18 @@ class Home extends React.Component {
           { name: 'userPosts', start: [1, 1], end: [3, 1] },
         ]}
       >
-        <Box gridArea="header" background="light1" align="center">
-          <Heading level="3">username</Heading>
+        <Box
+          gridArea="header"
+          background="light1"
+          pad="small"
+          margin="small"
+        >
+          <Button
+            alignSelf="start"
+            icon={<Group />}
+            plain={true}
+            label="Friends"
+          />
         </Box>
         <Box gridArea="avatar" background="light-5">
           <Box direction="row">
@@ -65,9 +79,18 @@ class Home extends React.Component {
             </Box>
           </Box>
         </Box>
-        <Box gridArea="userPosts" background="light-2">
-          Your Posts
-          {this.showPosts()}
+        <Box
+          gridArea="userPosts"
+          background="light-2"
+          pad="small"
+        >
+          <Heading
+            size="small"
+            color="#FFAA15"
+            textAlign="center"
+          >
+              Your Posts
+          </Heading>
           <Box direction="row">
             <TextInput
               placeholder="New Post"
@@ -85,6 +108,7 @@ class Home extends React.Component {
               label="Add"
             />
           </Box>
+          {this.showPosts()}
         </Box>
       </Grid>
     )
