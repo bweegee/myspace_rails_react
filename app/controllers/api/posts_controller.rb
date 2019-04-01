@@ -3,11 +3,11 @@ class Api::PostsController < ApplicationController
   before_action :set_post, only: [:update, :destroy]
 
   def index
-    render json: Post.all
+    render json: current_user.posts
   end
 
   def create
-    @post = Post.create(post_params) do |post|
+    post = Post.new(post_params) do |post|
       post.user = current_user
     end
 
@@ -22,19 +22,17 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
   end
 
   private
 
-  # def set_user
-  #   @user = User.find(params[:user_id])
-  # end
-
   def set_post
-    @post = User.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def post_params
     params.require(:post).permit(:comment)
   end
+
 end

@@ -32,6 +32,8 @@ const theme = {
     },
     colors: {
       brand: '#003399',
+      light1: '#d5e8fb',
+      add: '#00873D',
     },
   },
 };

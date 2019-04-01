@@ -41,6 +41,18 @@ export class AuthProvider extends React.Component {
       })
   }
 
+  handleAddPost = (user, history) => {
+    axios.post("api/posts", user)
+      .then( res => {
+        debugger
+        this.setState({ user: res.data });
+        history.push("/");
+      })
+      .catch( res => {
+        console.log(res);
+      })
+  }
+
   render() {
     return(
       <AuthContext.Provider value={{
@@ -49,6 +61,7 @@ export class AuthProvider extends React.Component {
         handleRegister: this.handleRegister,
         handleLogin: this.handleLogin,
         handleLogout: this.handleLogout,
+        handleAddPost: this.handleAddPost,
         setUser: (user) => this.setState({ user, }),
       }}>
         { this.props.children }
